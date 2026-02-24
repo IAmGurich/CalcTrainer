@@ -7,7 +7,7 @@ def add_complaint(chat_id, complaint):
         if not data['complaints']:
             data['complaints'].append({chat_id: complaint})
         else:
-            data['complaints'] = [{chat_id: complaint}]
+            data['complaints'].append({chat_id: complaint})
 
     except FileNotFoundError:
         data = {"complaints": []}
