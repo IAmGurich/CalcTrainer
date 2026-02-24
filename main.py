@@ -66,18 +66,28 @@ def generate_question(level):
                 question = f'({a} {znak1} {b}) {znak2} {c}'
                 answer = eval(f'({a} {znak1} {b}) {znak2} {c}')
         else:
-            a = random.randint(-20, 50)
-            b = random.randint(-20, 50)
             c = random.randint(-20, 20)
-            znak1 = random.choice('*-+')
-            znak2 = random.choice('*-+')
+            znak1 = random.choice('-+*')
+            znak2 = random.choice('-+*')
             choice = random.choice([0, 1])
             if choice == 1:
+                a = random.randint(2, 20)
+                if znak1 != '*':
+                    b = random.randint(-50, 50)
+                else:
+                    b = random.randint(-10, 10)
+
                 question = f'{a}² {znak1} {b} {znak2} {c}'
-                answer = a**2 - b * c
+                answer = eval(f'({a}**2) {znak1} {b} {znak2} {c}')
             else:
+                b = random.randint(2, 20)
+                if znak1 != '*':
+                    a = random.randint(-50, 50)
+                else:
+                    a = random.randint(-10, 10)
+
                 question = f'{a} {znak1} {b}² {znak2} {c}'
-                answer = a - (b ** 2) * c
+                answer = eval(f'{a} {znak1} ({b}**2) {znak2} {c}')
 
     return question, answer
 
